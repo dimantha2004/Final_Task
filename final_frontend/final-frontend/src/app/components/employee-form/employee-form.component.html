@@ -1,0 +1,74 @@
+<div class="employee-form-container">
+  <div class="header-section">
+    <h2>{{ isEditMode ? 'Edit Employee' : 'Add New Employee' }}</h2>
+    <p class="subtitle">{{ isEditMode ? 'Update employee information' : 'Create a new employee record' }}</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">
+    <span>{{ errorMessage }}</span>
+    <button (click)="dismissError()" class="close-btn">&times;</button>
+  </div>
+
+  <div class="form-card">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name*</label>
+        <input 
+          type="text" 
+          id="name" 
+          formControlName="name" 
+          class="form-control"
+          [ngClass]="{'invalid': submitted && employeeForm.get('name')?.errors}"
+          placeholder="Enter employee name"
+        >
+        <div *ngIf="submitted && employeeForm.get('name')?.errors" class="error-message">
+          {{ getErrorMessage('name') }}
+        </div>
+        <div class="help-text">Only alphabetic characters and spaces, maximum 100 characters</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          class="form-control"
+          [ngClass]="{'invalid': submitted && employeeForm.get('email')?.errors}"
+          placeholder="Enter employee email"
+        >
+        <div *ngIf="submitted && employeeForm.get('email')?.errors" class="error-message">
+          {{ getErrorMessage('email') }}
+        </div>
+        <div class="help-text">Must be a valid email format and unique in the system</div>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department*</label>
+        <select 
+          id="department" 
+          formControlName="department" 
+          class="form-control"
+          [ngClass]="{'invalid': submitted && employeeForm.get('department')?.errors}"
+        >
+          <option value="" disabled selected>Select a department</option>
+          <option *ngFor="let dept of departments" [value]="dept">
+            {{ dept }}
+          </option>
+        </select>
+        <div *ngIf="submitted && employeeForm.get('department')?.errors" class="error-message">
+          {{ getErrorMessage('department') }}
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" [routerLink]="['/employees']">
+          Cancel
+        </button>
+        <button type="submit" class="btn-submit">
+          {{ isEditMode ? 'Update' : 'Save' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

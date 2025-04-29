@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <p class="subtitle">Sign in to access the Employee Directory</p>
+
+    <div *ngIf="errorMessage" class="alert alert-error">
+      <span>{{ errorMessage }}</span>
+      <button (click)="dismissError()" class="close-btn">&times;</button>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          placeholder="Enter your username"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter your password"
+        >
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" [disabled]="loginForm.invalid">
+          Login
+        </button>
+      </div>
+
+      <div class="register-link">
+        Don't have an account? <a [routerLink]="['/register']">Register here</a>
+      </div>
+    </form>
+  </div>
+</div>

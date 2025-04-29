@@ -1,0 +1,64 @@
+<div class="employee-list-container">
+  <div class="header-section">
+    <h2>Employee Directory</h2>
+    <p class="subtitle">Manage employee records efficiently</p>
+
+    <a [routerLink]="['/employees/new']" class="btn-add">
+      Add New Employee
+    </a>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    <span>{{ successMessage }}</span>
+    <button (click)="clearMessages()" class="close-btn">&times;</button>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">
+    <span>{{ errorMessage }}</span>
+    <button (click)="clearMessages()" class="close-btn">&times;</button>
+  </div>
+
+  <div class="table-container">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="employees$ | async as employees; else loading">
+          <tr *ngIf="employees.length === 0">
+            <td colspan="7" class="no-data">No employees found</td>
+          </tr>
+          <tr *ngFor="let employee of employees" class="employee-row">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td class="department">{{ employee.department }}</td>
+            <td>{{ formatDate(employee.createdAt) }}</td>
+            <td>{{ formatDate(employee.updatedAt) }}</td>
+            <td class="action-buttons">
+              <a [routerLink]="['/employees', employee.id, 'edit']" class="btn-edit">
+                Edit
+              </a>
+              <button (click)="deleteEmployee(employee.id!)" class="btn-delete">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #loading>
+          <tr>
+            <td colspan="7" class="loading">Loading employees...</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>
