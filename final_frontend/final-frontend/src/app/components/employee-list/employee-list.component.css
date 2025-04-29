@@ -15,7 +15,7 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 .header-section {
@@ -107,7 +107,7 @@ body {
 
 .btn-add {
   display: inline-block;
-  background-color: #3498db;
+  background-color:rgb(230, 2, 127);
   color: white;
   padding: 0.75rem 1.25rem;
   border-radius: 6px;
