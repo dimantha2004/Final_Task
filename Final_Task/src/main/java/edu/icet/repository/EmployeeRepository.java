@@ -1,6 +1,6 @@
 package edu.icet.repository;
 
-import com.fortium.employeedirectory.model.Employee;
+import edu.icet.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

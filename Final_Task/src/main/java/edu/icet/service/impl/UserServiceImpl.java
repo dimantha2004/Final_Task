@@ -1,11 +1,11 @@
 package edu.icet.service.impl;
 
-import com.fortium.employeedirectory.dto.LoginDTO;
-import com.fortium.employeedirectory.dto.UserDTO;
-import com.fortium.employeedirectory.entity.User;
-import com.fortium.employeedirectory.exception.ValidationException;
-import com.fortium.employeedirectory.repository.UserRepository;
-import com.fortium.employeedirectory.service.UserService;
+import edu.icet.dto.LoginDTO;
+import edu.icet.dto.UserDTO;
+import edu.icet.entity.User;
+import edu.icet.exception.ValidationException;
+import edu.icet.repository.UserRepository;
+import edu.icet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

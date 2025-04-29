@@ -1,7 +1,7 @@
 package edu.icet.controller;
 
-import com.fortium.employeedirectory.model.Employee;
-import com.fortium.employeedirectory.service.EmployeeService;
+import edu.icet.model.Employee;
+import edu.icet.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

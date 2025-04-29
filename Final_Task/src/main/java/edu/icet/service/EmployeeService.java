@@ -1,9 +1,9 @@
 package edu.icet.service;
 
-import com.fortium.employeedirectory.exception.ResourceNotFoundException;
-import com.fortium.employeedirectory.exception.ValidationException;
-import com.fortium.employeedirectory.model.Employee;
-import com.fortium.employeedirectory.repository.EmployeeRepository;
+import edu.icet.exception.ResourceNotFoundException;
+import edu.icet.exception.ValidationException;
+import edu.icet.model.Employee;
+import edu.icet.repository.EmployeeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
