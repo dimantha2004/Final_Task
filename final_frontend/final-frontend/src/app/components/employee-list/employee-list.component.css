@@ -11,7 +11,6 @@ body {
   line-height: 1.6;
 }
 
-/* Container for the entire component */
 .employee-list-container {
   width: 100%;
   max-width: 1200px;
@@ -19,7 +18,6 @@ body {
   padding: 0 1rem;
 }
 
-/* Header section styling */
 .header-section {
   margin-bottom: 2rem;
 }
@@ -37,7 +35,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Top actions section */
 .top-actions {
   display: flex;
   justify-content: space-between;
@@ -47,7 +44,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Search container styling */
 .search-container {
   display: flex;
   align-items: center;
@@ -109,7 +105,6 @@ body {
   color: #34495e;
 }
 
-/* Add button styling */
 .btn-add {
   display: inline-block;
   background-color: #3498db;
@@ -136,7 +131,6 @@ body {
   box-shadow: 0 2px 3px rgba(52, 152, 219, 0.3);
 }
 
-/* Alert messages styling */
 .alert {
   padding: 1rem;
   border-radius: 6px;
@@ -172,7 +166,6 @@ body {
   opacity: 1;
 }
 
-/* Table container */
 .table-container {
   background-color: white;
   border-radius: 8px;
@@ -180,7 +173,6 @@ body {
   overflow: hidden;
 }
 
-/* Table styling */
 .employee-table {
   width: 100%;
   border-collapse: collapse;
@@ -217,12 +209,10 @@ body {
   border-bottom: none;
 }
 
-/* Department styling */
 .department {
   font-weight: 500;
 }
 
-/* Action buttons */
 .action-buttons {
   display: flex;
   gap: 0.5rem;
@@ -258,7 +248,6 @@ body {
   background-color: #f5c6cb;
 }
 
-/* Loading and no data states */
 .loading, .no-data {
   text-align: center;
   padding: 2rem;
@@ -266,7 +255,6 @@ body {
   font-style: italic;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .top-actions {
     flex-direction: column;
@@ -287,7 +275,7 @@ body {
   .employee-table td:nth-child(5),
   .employee-table th:nth-child(6),
   .employee-table td:nth-child(6) {
-    display: none; /* Hide created/updated dates on mobile */
+    display: none; 
   }
   
   .action-buttons {
