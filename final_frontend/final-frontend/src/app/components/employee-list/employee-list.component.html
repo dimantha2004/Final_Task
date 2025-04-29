@@ -2,22 +2,42 @@
   <div class="header-section">
     <h2>Employee Directory</h2>
     <p class="subtitle">Manage employee records efficiently</p>
-
-    <a [routerLink]="['/employees/new']" class="btn-add">
-      Add New Employee
-    </a>
+    <div class="top-actions">
+      <div class="search-container">
+        <div class="search-fields">
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            placeholder="Search employees..." 
+            class="search-input"
+            (input)="applySearch()" />
+          
+          <select [(ngModel)]="searchField" (change)="applySearch()" class="search-select">
+            <option value="all">All Fields</option>
+            <option value="name">Name</option>
+            <option value="email">Email</option>
+            <option value="department">Department</option>
+          </select>
+        </div>
+        <button *ngIf="searchTerm" (click)="clearSearch()" class="btn-clear">
+          Clear
+        </button>
+      </div>
+      <a [routerLink]="['/employees/new']" class="btn-add">
+        Add New Employee
+      </a>
+    </div>
   </div>
-
+  
   <div *ngIf="successMessage" class="alert alert-success">
     <span>{{ successMessage }}</span>
     <button (click)="clearMessages()" class="close-btn">&times;</button>
   </div>
-
   <div *ngIf="errorMessage" class="alert alert-error">
     <span>{{ errorMessage }}</span>
     <button (click)="clearMessages()" class="close-btn">&times;</button>
   </div>
-
+  
   <div class="table-container">
     <table class="employee-table">
       <thead>
@@ -32,9 +52,11 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngIf="employees$ | async as employees; else loading">
+        <ng-container *ngIf="filteredEmployees$ | async as employees; else loading">
           <tr *ngIf="employees.length === 0">
-            <td colspan="7" class="no-data">No employees found</td>
+            <td colspan="7" class="no-data">
+              {{ searchTerm ? 'No matching employees found' : 'No employees found' }}
+            </td>
           </tr>
           <tr *ngFor="let employee of employees" class="employee-row">
             <td>{{ employee.id }}</td>
@@ -61,4 +83,3 @@
       </tbody>
     </table>
   </div>
-</div>
