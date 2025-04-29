@@ -87,7 +87,7 @@ export class EmployeeFormComponent implements OnInit {
         },
         error: (error) => {
           if (error.status === 400 && error.error.errors) {
-            // Handle validation errors
+            
             const validationErrors = error.error.errors;
             Object.keys(validationErrors).forEach(key => {
               const formControl = this.employeeForm.get(key);
@@ -109,7 +109,7 @@ export class EmployeeFormComponent implements OnInit {
         },
         error: (error) => {
           if (error.status === 400 && error.error.errors) {
-            // Handle validation errors
+            
             const validationErrors = error.error.errors;
             Object.keys(validationErrors).forEach(key => {
               const formControl = this.employeeForm.get(key);

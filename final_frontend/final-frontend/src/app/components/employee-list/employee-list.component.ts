@@ -18,13 +18,11 @@ export class EmployeeListComponent implements OnInit {
   employees$!: Observable<Employee[]>;
   filteredEmployees$!: Observable<Employee[]>;
   
-  // Search properties
   searchTerm: string = '';
   searchField: string = 'all';
   private searchTerms = new BehaviorSubject<string>('');
   private searchFields = new BehaviorSubject<string>('all');
   
-  // Alert messages
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
@@ -33,7 +31,6 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmployees();
     
-    // Create filtered employees observable that combines the original list with search terms
     this.filteredEmployees$ = combineLatest([
       this.employees$,
       this.searchTerms,
@@ -47,7 +44,6 @@ export class EmployeeListComponent implements OnInit {
     this.employees$ = this.employeeService.getEmployees();
   }
 
-  // Search methods
   applySearch(): void {
     this.searchTerms.next(this.searchTerm);
     this.searchFields.next(this.searchField);
@@ -59,7 +55,6 @@ export class EmployeeListComponent implements OnInit {
     this.applySearch();
   }
 
-  // Filter employees based on search term and selected field
   private filterEmployees(employees: Employee[], term: string, field: string): Employee[] {
     if (!term.trim()) {
       return employees;
@@ -69,14 +64,14 @@ export class EmployeeListComponent implements OnInit {
     
     return employees.filter(employee => {
       if (field === 'all') {
-        // Search across all fields
+        
         return (
           employee.name?.toLowerCase().includes(searchText) ||
           employee.email?.toLowerCase().includes(searchText) ||
           employee.department?.toLowerCase().includes(searchText)
         );
       } else {
-        // Search in the specific field
+        
         const value = employee[field as keyof Employee];
         return value && typeof value === 'string' 
           ? value.toLowerCase().includes(searchText) 
