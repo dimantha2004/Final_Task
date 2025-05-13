@@ -22,16 +22,3 @@
 - **NetBeans / IntelliJ IDEA** – IDE for development
 - **Git** – Version control
 
-## 📂 Folder Structure
-
-```plaintext
-Final_Task/
-├── src/
-│   ├── customer/
-│   ├── item/
-│   ├── order/
-│   └── main/
-├── database/
-│   └── final_task_db.sql
-├── README.md
-└── .gitignore
